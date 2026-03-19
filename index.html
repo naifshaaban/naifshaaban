@@ -1,0 +1,1240 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>نايف شعبان — Nayif Sha'ban</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --ink:       #0f0e0c;
+  --parchment: #f5f0e8;
+  --warm:      #f9f5ed;
+  --gold:      #a07840;
+  --gold-light:#c4994e;
+  --rust:      #8b3a2a;
+  --slate:     #2c3340;
+  --mist:      #e8e2d8;
+  --text:      #1e1c18;
+  --text-soft: #4a453c;
+  --text-mute: #7a7268;
+  --border:    #d4cec4;
+  --shadow:    rgba(15,14,12,0.12);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Noto Naskh Arabic', 'Amiri', Georgia, serif;
+  background: var(--parchment);
+  color: var(--text);
+  line-height: 1.9;
+  font-size: 17px;
+  overflow-x: hidden;
+}
+
+/* ─── NOISE TEXTURE OVERLAY ─── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1000;
+  opacity: 0.4;
+}
+
+/* ─── MASTHEAD ─── */
+.masthead {
+  background: var(--slate);
+  color: var(--parchment);
+  padding: 0 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  height: 58px;
+  border-bottom: 2px solid var(--gold);
+}
+
+.masthead-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--gold-light);
+  direction: ltr;
+}
+
+.masthead-name span {
+  font-family: 'Amiri', serif;
+  font-size: 1rem;
+  color: var(--mist);
+  margin-right: 1rem;
+  font-weight: 400;
+}
+
+nav {
+  display: flex;
+  gap: 0.2rem;
+  align-items: center;
+}
+
+nav a {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.82rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--mist);
+  text-decoration: none;
+  padding: 0.35rem 0.75rem;
+  transition: color 0.2s;
+  border-radius: 2px;
+}
+
+nav a:hover { color: var(--gold-light); }
+
+.lang-toggle {
+  background: none;
+  border: 1px solid var(--gold);
+  color: var(--gold-light);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  padding: 0.25rem 0.65rem;
+  cursor: pointer;
+  border-radius: 2px;
+  margin-right: 1rem;
+  transition: all 0.2s;
+}
+
+.lang-toggle:hover {
+  background: var(--gold);
+  color: var(--slate);
+}
+
+/* ─── HERO ─── */
+.hero {
+  min-height: 90vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-left {
+  background: var(--slate);
+  padding: 5rem 4rem 5rem 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+}
+
+.hero-left::after {
+  content: '';
+  position: absolute;
+  top: 0; right: -1px; bottom: 0;
+  width: 60px;
+  background: linear-gradient(to right, var(--slate), transparent);
+  z-index: 2;
+}
+
+.hero-ornament {
+  font-family: 'Amiri', serif;
+  font-size: 5rem;
+  color: var(--gold);
+  opacity: 0.15;
+  line-height: 1;
+  margin-bottom: 1rem;
+  animation: fadeUp 1.2s ease forwards;
+}
+
+.hero-ar {
+  font-family: 'Amiri', serif;
+  font-size: 3.2rem;
+  font-weight: 700;
+  color: var(--parchment);
+  line-height: 1.3;
+  margin-bottom: 0.5rem;
+  animation: fadeUp 1s 0.2s ease both;
+}
+
+.hero-en {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  font-weight: 300;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  margin-bottom: 2.5rem;
+  direction: ltr;
+  animation: fadeUp 1s 0.35s ease both;
+}
+
+.hero-tagline {
+  font-size: 1rem;
+  color: var(--mist);
+  opacity: 0.85;
+  max-width: 380px;
+  line-height: 2;
+  animation: fadeUp 1s 0.5s ease both;
+}
+
+.hero-divider {
+  width: 50px;
+  height: 2px;
+  background: var(--gold);
+  margin: 2rem 0;
+  animation: expandWidth 1s 0.6s ease both;
+}
+
+.hero-affiliations {
+  font-size: 0.82rem;
+  color: var(--text-mute);
+  color: #8a9aaa;
+  line-height: 2.2;
+  animation: fadeUp 1s 0.7s ease both;
+}
+
+.hero-right {
+  background: var(--warm);
+  padding: 5rem 3rem 5rem 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+}
+
+.hero-quote-mark {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 8rem;
+  color: var(--gold);
+  opacity: 0.12;
+  line-height: 0.7;
+  margin-bottom: -1rem;
+}
+
+.hero-quote {
+  font-family: 'Amiri', serif;
+  font-size: 1.45rem;
+  font-style: italic;
+  color: var(--text-soft);
+  line-height: 2.2;
+  border-right: 3px solid var(--gold);
+  padding-right: 1.5rem;
+  margin-bottom: 1rem;
+  animation: fadeIn 1.5s 0.8s ease both;
+}
+
+.hero-quote-attr {
+  font-size: 0.85rem;
+  color: var(--gold);
+  font-style: normal;
+  animation: fadeIn 1.5s 1s ease both;
+}
+
+.hero-cta {
+  margin-top: 3rem;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  animation: fadeUp 1s 0.9s ease both;
+}
+
+.btn-primary {
+  background: var(--gold);
+  color: var(--ink);
+  padding: 0.7rem 1.8rem;
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-family: 'Cormorant Garamond', serif;
+  letter-spacing: 0.1em;
+  transition: all 0.25s;
+  border: 2px solid var(--gold);
+}
+
+.btn-primary:hover {
+  background: transparent;
+  color: var(--gold);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--text-soft);
+  padding: 0.7rem 1.8rem;
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-family: 'Cormorant Garamond', serif;
+  letter-spacing: 0.1em;
+  border: 2px solid var(--border);
+  transition: all 0.25s;
+}
+
+.btn-secondary:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+/* ─── SECTION SYSTEM ─── */
+.section {
+  padding: 6rem 0;
+  position: relative;
+}
+
+.section-alt { background: var(--warm); }
+.section-dark { background: var(--slate); color: var(--parchment); }
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 3rem;
+}
+
+.section-header {
+  display: flex;
+  align-items: baseline;
+  gap: 1.5rem;
+  margin-bottom: 3.5rem;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 1.5rem;
+}
+
+.section-dark .section-header {
+  border-bottom-color: rgba(255,255,255,0.15);
+}
+
+.section-number {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.25em;
+  color: var(--gold);
+  text-transform: uppercase;
+}
+
+.section-title-ar {
+  font-family: 'Amiri', serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.section-dark .section-title-ar { color: var(--parchment); }
+
+.section-title-en {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-mute);
+  margin-right: auto;
+}
+
+.section-dark .section-title-en { color: #8a9aaa; }
+
+/* ─── ABOUT ─── */
+.about-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+.about-text p {
+  margin-bottom: 1.5rem;
+  color: var(--text-soft);
+  font-size: 1.02rem;
+}
+
+.about-text p:first-child {
+  font-size: 1.15rem;
+  color: var(--text);
+}
+
+.about-sidebar {}
+
+.sidebar-card {
+  background: var(--slate);
+  color: var(--parchment);
+  padding: 1.8rem;
+  margin-bottom: 1.5rem;
+}
+
+.sidebar-card-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  margin-bottom: 1rem;
+  direction: ltr;
+}
+
+.sidebar-card ul {
+  list-style: none;
+  font-size: 0.88rem;
+  line-height: 2.2;
+  color: var(--mist);
+}
+
+.sidebar-card ul li::before {
+  content: '—';
+  color: var(--gold);
+  margin-left: 0.5rem;
+}
+
+/* ─── RESEARCH PAPERS ─── */
+.papers-grid {
+  display: grid;
+  gap: 0;
+}
+
+.paper-item {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 2rem;
+  align-items: center;
+  padding: 1.8rem 0;
+  border-bottom: 1px solid var(--border);
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.paper-item:hover { background: var(--warm); padding-right: 1rem; padding-left: 1rem; margin: 0 -1rem; }
+.paper-item:hover .paper-arrow { opacity: 1; transform: translateX(-4px); }
+
+.paper-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  color: var(--gold);
+  min-width: 2.5rem;
+  text-align: center;
+}
+
+.paper-body { flex: 1; }
+
+.paper-title {
+  font-family: 'Amiri', serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 0.3rem;
+  line-height: 1.6;
+}
+
+.paper-title-en {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 0.88rem;
+  color: var(--text-mute);
+  direction: ltr;
+}
+
+.paper-meta {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.5rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.tag {
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  background: var(--mist);
+  color: var(--text-mute);
+  padding: 0.2rem 0.6rem;
+  font-family: 'Cormorant Garamond', serif;
+}
+
+.tag-gold { background: var(--gold); color: var(--ink); }
+.tag-rust { background: var(--rust); color: white; }
+
+.paper-date {
+  font-size: 0.78rem;
+  color: var(--text-mute);
+  font-family: 'Cormorant Garamond', serif;
+  direction: ltr;
+}
+
+.paper-arrow {
+  color: var(--gold);
+  font-size: 1.2rem;
+  opacity: 0;
+  transition: all 0.2s;
+}
+
+/* ─── PROJECTS ─── */
+.projects-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2px;
+}
+
+.project-card {
+  background: rgba(255,255,255,0.04);
+  padding: 2.5rem 2rem;
+  border: 1px solid rgba(255,255,255,0.08);
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.project-card::before {
+  content: '';
+  position: absolute;
+  top: 0; right: 0;
+  width: 3px;
+  height: 0;
+  background: var(--gold);
+  transition: height 0.3s;
+}
+
+.project-card:hover::before { height: 100%; }
+.project-card:hover { background: rgba(255,255,255,0.07); }
+
+.project-icon {
+  font-size: 2rem;
+  margin-bottom: 1.2rem;
+  opacity: 0.7;
+}
+
+.project-title {
+  font-family: 'Amiri', serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--parchment);
+  margin-bottom: 0.4rem;
+}
+
+.project-title-en {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  margin-bottom: 1rem;
+  direction: ltr;
+}
+
+.project-desc {
+  font-size: 0.9rem;
+  color: #8a9aaa;
+  line-height: 2;
+}
+
+.project-status {
+  display: inline-block;
+  margin-top: 1.2rem;
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-family: 'Cormorant Garamond', serif;
+  color: var(--gold-light);
+}
+
+/* ─── BOOKS ─── */
+.books-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+}
+
+.book-card {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1.5rem;
+  padding: 2rem;
+  background: var(--parchment);
+  border: 1px solid var(--border);
+  border-right: 4px solid var(--gold);
+  transition: all 0.25s;
+}
+
+.book-card:hover {
+  box-shadow: 4px 4px 0 var(--gold);
+  transform: translate(-2px, -2px);
+}
+
+.book-spine {
+  width: 12px;
+  background: var(--gold);
+  border-radius: 1px;
+  min-height: 100px;
+}
+
+.book-title {
+  font-family: 'Amiri', serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin-bottom: 0.3rem;
+  line-height: 1.5;
+}
+
+.book-title-en {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 0.9rem;
+  color: var(--text-mute);
+  margin-bottom: 1rem;
+  direction: ltr;
+}
+
+.book-thesis {
+  font-size: 0.92rem;
+  color: var(--text-soft);
+  line-height: 1.9;
+  border-top: 1px solid var(--border);
+  padding-top: 1rem;
+  margin-top: 0.5rem;
+}
+
+.book-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 1rem;
+  font-size: 0.75rem;
+  color: var(--rust);
+  font-family: 'Cormorant Garamond', serif;
+  letter-spacing: 0.1em;
+}
+
+.book-status::before {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background: var(--rust);
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+/* ─── CONTACT ─── */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+.contact-intro {
+  font-size: 1.05rem;
+  color: var(--text-soft);
+  line-height: 2.1;
+  margin-bottom: 2rem;
+}
+
+.contact-links {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.contact-link {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.2rem;
+  background: var(--warm);
+  border: 1px solid var(--border);
+  text-decoration: none;
+  color: var(--text);
+  transition: all 0.2s;
+  direction: ltr;
+}
+
+.contact-link:hover {
+  border-color: var(--gold);
+  background: var(--parchment);
+}
+
+.contact-link-icon {
+  width: 36px;
+  height: 36px;
+  background: var(--slate);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold-light);
+  font-size: 0.85rem;
+  flex-shrink: 0;
+  font-family: 'Cormorant Garamond', serif;
+  letter-spacing: 0.05em;
+}
+
+.contact-link-text strong {
+  display: block;
+  font-size: 0.88rem;
+  font-family: 'Cormorant Garamond', serif;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.1rem;
+}
+
+.contact-link-text span {
+  font-size: 0.8rem;
+  color: var(--text-mute);
+}
+
+.contact-manifesto {
+  background: var(--slate);
+  color: var(--parchment);
+  padding: 2.5rem;
+  position: relative;
+}
+
+.contact-manifesto::before {
+  content: '؟';
+  position: absolute;
+  top: -0.5rem;
+  right: 2rem;
+  font-family: 'Amiri', serif;
+  font-size: 6rem;
+  color: var(--gold);
+  opacity: 0.1;
+  line-height: 1;
+}
+
+.contact-manifesto p {
+  font-size: 0.95rem;
+  color: #aab4be;
+  line-height: 2.2;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.contact-manifesto p:first-child {
+  font-family: 'Amiri', serif;
+  font-size: 1.1rem;
+  color: var(--parchment);
+}
+
+/* ─── FOOTER ─── */
+footer {
+  background: #0a0908;
+  color: #5a5550;
+  padding: 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 2px solid var(--gold);
+}
+
+.footer-name {
+  font-family: 'Amiri', serif;
+  font-size: 1.1rem;
+  color: var(--gold-light);
+}
+
+.footer-copy {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  direction: ltr;
+}
+
+/* ─── HORIZONTAL RULE ORNAMENT ─── */
+.ornament {
+  text-align: center;
+  color: var(--gold);
+  font-size: 1.2rem;
+  opacity: 0.5;
+  margin: 2rem 0;
+  letter-spacing: 0.5rem;
+}
+
+/* ─── ANIMATIONS ─── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes expandWidth {
+  from { width: 0; }
+  to   { width: 50px; }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.3; }
+}
+
+/* ─── SCROLL REVEAL ─── */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ─── LANGUAGE TOGGLE ─── */
+.ar-only, .en-only { transition: opacity 0.3s; }
+body.en-mode .ar-only { display: none; }
+body.en-mode .en-only { display: block; }
+.en-only { display: none; }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 900px) {
+  .hero { grid-template-columns: 1fr; min-height: auto; }
+  .hero-left { padding: 4rem 2rem; }
+  .hero-right { padding: 3rem 2rem; }
+  .hero-left::after { display: none; }
+  .about-grid, .books-grid, .contact-grid { grid-template-columns: 1fr; }
+  .projects-grid { grid-template-columns: 1fr; }
+  .container { padding: 0 1.5rem; }
+  nav { display: none; }
+  .masthead { padding: 0 1.5rem; }
+  footer { flex-direction: column; gap: 1rem; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- ─── MASTHEAD ─── -->
+<header class="masthead">
+  <div class="masthead-name">
+    <span>نايف شعبان</span>
+    Nayif Sha'ban
+  </div>
+  <nav>
+    <a href="#about">عن الكاتب</a>
+    <a href="#research">الأبحاث</a>
+    <a href="#books">الكتب</a>
+    <a href="#projects">المشاريع</a>
+    <a href="#contact">تواصل</a>
+  </nav>
+  <button class="lang-toggle" onclick="toggleLang()" id="langBtn">EN</button>
+</header>
+
+<!-- ─── HERO ─── -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-ornament ar-only">ن</div>
+    <h1 class="hero-ar ar-only">نايف شعبان</h1>
+    <h1 class="hero-ar en-only" style="font-family:'Cormorant Garamond',serif;font-size:2.8rem;direction:ltr;">Nayif Sha'ban</h1>
+    <div class="hero-en ar-only">Nayif Sha'ban</div>
+    <div class="hero-divider"></div>
+    <p class="hero-tagline ar-only">
+      باحث وكاتب سياسي سوري. مدير البحث في مشروع نماذج التراث العربي التطبيقية.
+      يعمل على بناء تيار الاستقلالية المعرفية في الفكر السياسي العربي المعاصر.
+    </p>
+    <p class="hero-tagline en-only" style="font-family:'Cormorant Garamond',serif;direction:ltr;font-size:1.05rem;">
+      Syrian political analyst and writer. Research Director of the Applied Arab-Heritage Models Project. Working to establish epistemic independence as a foundation for contemporary Arab political thought.
+    </p>
+    <div class="hero-affiliations ar-only">
+      منتدى الاستقلال للدراسات السياسية والاستراتيجية<br>
+      مركز بلاد الشام للدراسات والأبحاث، لندن<br>
+      IFSS دمشق
+    </div>
+    <div class="hero-affiliations en-only" style="direction:ltr;font-family:'Cormorant Garamond',serif;">
+      Istiqlal Forum for Political and Strategic Studies<br>
+      Levant Centre for Studies and Research, London<br>
+      IFSS Damascus
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-quote-mark">"</div>
+    <blockquote class="hero-quote ar-only">
+      التأصيل المقبول هو الذي يُولِّد أسئلة جديدة،
+      لا الذي يُزيِّن إجابات جاهزة.
+    </blockquote>
+    <blockquote class="hero-quote en-only" style="direction:ltr;font-family:'Cormorant Garamond',serif;font-size:1.3rem;border-right:none;border-left:3px solid var(--gold);padding-right:0;padding-left:1.5rem;">
+      Genuine theoretical grounding is that which generates new questions —
+      not that which decorates ready-made answers.
+    </blockquote>
+    <p class="hero-quote-attr ar-only">— من منهجية الاستقلالية المعرفية</p>
+    <p class="hero-quote-attr en-only" style="direction:ltr;font-family:'Cormorant Garamond',serif;">— From the Epistemic Independence Methodology</p>
+    <div class="hero-cta">
+      <a href="#research" class="btn-primary ar-only">الأوراق البحثية</a>
+      <a href="#research" class="btn-primary en-only" style="font-family:'Cormorant Garamond',serif;direction:ltr;">Research Papers</a>
+      <a href="#contact" class="btn-secondary ar-only">تواصل معي</a>
+      <a href="#contact" class="btn-secondary en-only" style="font-family:'Cormorant Garamond',serif;direction:ltr;">Get in Touch</a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── ABOUT ─── -->
+<section class="section" id="about">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-number">01</span>
+      <h2 class="section-title-ar ar-only">عن الكاتب</h2>
+      <h2 class="section-title-ar en-only" style="font-family:'Cormorant Garamond',serif;direction:ltr;">About</h2>
+      <span class="section-title-en">About</span>
+    </div>
+    <div class="about-grid reveal">
+      <div class="about-text">
+        <p class="ar-only">
+          منذ الأيام الأولى لثورة 2011، والكتابة بالنسبة لي ليست تعليقاً على الحدث — هي محاولة لقراءة ما وراءه. شاركت في الميدان وعملت في إدلب وشمال سوريا، ثم انتقلت إلى بناء مشروع فكري أكثر صرامة: إنتاج تحليل سياسي ينطلق من الموروث العربي الإسلامي لا من تبعية المناهج الغربية.
+        </p>
+        <p class="en-only" style="font-family:'Cormorant Garamond',serif;direction:ltr;font-size:1.1rem;">
+          Since the early days of Syria's 2011 revolution, writing has not been commentary on events — it has been an attempt to read behind them. I worked in the field across northern Syria and Idlib before turning toward a more rigorous intellectual project: producing political analysis rooted in the Arab-Islamic intellectual tradition rather than subordinated to Western methodological frameworks.
+        </p>
+        <p class="ar-only">
+          المشروع الذي أعمل عليه — الاستقلالية المعرفية — ليس رفضاً للغرب بل موقفاً معرفياً: ابن خلدون والماوردي ومالك بن نبي والمسيري أدوات تحليلية أولى، والفكر الغربي حوار نقدي لا مرجعية أساسية. الهدف بناء مدرسة فكرية صارمة تُنتج أسئلة لا تطرحها الأدبيات القائمة.
+        </p>
+        <p class="en-only" style="font-family:'Cormorant Garamond',serif;direction:ltr;">
+          The Epistemic Independence Project is not a rejection of Western thought — it is an epistemological position: Ibn Khaldun, Al-Mawardi, Malek Bin Nabi, and El-Messiri as primary analytical tools, with Western theory as critical dialogue rather than foundational reference. The goal is a rigorous intellectual school that produces questions the existing literature does not ask.
+        </p>
+        <p class="ar-only">
+          أكتب للنخبة السياسية وصانعي القرار والباحثين في العالم العربي، وبشكل متزايد للقارئ الغربي الذي لا يجد في أدواته الأدوات الكافية لفهم المنطقة. أسلوبي نثر متواصل، بلا قوائم ولا تبسيط، وخاتمة تفتح لا تُغلق.
+        </p>
+        <p class="en-only" style="font-family:'Cormorant Garamond',serif;direction:ltr;">
+          I write for political elites, policymakers, and researchers across the Arab world, and increasingly for Western readers who find their own tools insufficient for understanding the region. My style is continuous prose — no bullet points, no simplification — and conclusions that open rather than close.
+        </p>
+      </div>
+      <div class="about-sidebar">
+        <div class="sidebar-card">
+          <div class="sidebar-card-title">Fields of Work</div>
+          <ul class="ar-only">
+            <li>النظرية السياسية العربية</li>
+            <li>التحليل الجيوسياسي</li>
+            <li>الاستقلالية المعرفية</li>
+            <li>الشأن السوري</li>
+            <li>نقد الاستشراق</li>
+          </ul>
+          <ul class="en-only" style="direction:ltr;font-family:'Cormorant Garamond',serif;">
+            <li>Arab Political Theory</li>
+            <li>Geopolitical Analysis</li>
+            <li>Epistemic Independence</li>
+            <li>Syrian Affairs</li>
+            <li>Orientalism Critique</li>
+          </ul>
+        </div>
+        <div class="sidebar-card">
+          <div class="sidebar-card-title">Platforms</div>
+          <ul style="direction:ltr;font-family:'Cormorant Garamond',serif;">
+            <li>Substack: naifshaaban.substack.com</li>
+            <li>Academia.edu: NaifShaaban</li>
+            <li>X / Twitter: @sureidea</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── RESEARCH PAPERS ─── -->
+<section class="section section-alt" id="research">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-number">02</span>
+      <h2 class="section-title-ar ar-only">الأوراق البحثية</h2>
+      <h2 class="section-title-ar en-only" style="font-family:'Cormorant Garamond',serif;direction:ltr;">Research Papers</h2>
+      <span class="section-title-en">Research</span>
+    </div>
+    <div class="papers-grid reveal">
+
+      <div class="paper-item">
+        <span class="paper-num">01</span>
+        <div class="paper-body">
+          <div class="paper-title ar-only">النموذج الاختزالي مسلَّحاً: قراءة في ظاهرة بيت هيغسث</div>
+          <div class="paper-title en-only" style="font-family:'Cormorant Garamond',serif;direction:ltr;font-size:1.1rem;">The Reductive Model Armed: Reading the Hegseth Phenomenon</div>
+          <div class="paper-title-en ar-only">The Reductive Model Armed — Reading the Hegseth Phenomenon</div>
+          <div class="paper-meta">
+            <span class="tag tag-gold ar-only">الاستقلالية المعرفية</span>
+            <span class="tag tag-gold en-only" style="font-family:'Cormorant Garamond',serif;direction:ltr;">Epistemic Independence</span>
+            <span class="tag ar-only">تحليل سياسي</span>
+            <span class="tag en-only" style="font-family:'Cormorant Garamond',serif;direction:ltr;">Political Analysis</span>
+            <span class="paper-date">مارس 2026</span>
+          </div>
+        </div>
+        <span class="paper-arrow">←</span>
+      </div>
+
+      <div class="paper-item">
+        <span class="paper-num">02</span>
+        <div class="paper-body">
+          <div class="paper-title ar-only">نظرية التوظيف الجيوسياسي — وثيقة التأسيس</div>
+          <div class="paper-title en-only" style="font-family:'Cormorant Garamond',serif;direction:ltr;font-size:1.1rem;">Geopolitical Instrumentalization Theory — Foundation Document</div>
+          <div class="paper-title-en ar-only">Geopolitical Instrumentalization Theory (GIT)</div>
+          <div class="paper-meta">
+            <span class="tag tag-rust ar-only">نظرية جديدة</span>
+            <span class="tag tag-rust en-only" style="font-family:'Cormorant Garamond',serif;direction:ltr;">New Theory</span>
+            <span class="tag ar-only">علاقات دولية</span>
+            <span class="tag en-only" style="font-family:'Cormorant Garamond',serif;direction:ltr;">International Relations</span>
+            <span class="paper-date">مارس 2026</span>
+          </div>
+        </div>
+        <span class="paper-arrow">←</span>
+      </div>
+
+      <div class="paper-item">
+        <span class="paper-num">03</span>
+        <div class="paper-body">
+          <div class="paper-title ar-only">التزامن الأنثروبولوجي السياسي — مفهوم تأسيسي</div>
+          <div class="paper-title en-only" style="font-family:'Cormorant Garamond',serif;direction:ltr;font-size:1.1rem;">Political Anthropological Synchrony — A Foundational Concept</div>
+          <div class="paper-title-en ar-only">Political Anthropological Synchrony</div>
+          <div class="paper-meta">
+            <span class="tag ar-only">نظرية سياسية</span>
+            <span class="tag en-only" style="font-family:'Cormorant Garamond',serif;direction:ltr;">Political Theory</span>
+            <span class="tag ar-only">سلسلة سورية</span>
+            <span class="paper-date">فبراير 2026</span>
+          </div>
+        </div>
+        <span class="paper-arrow">←</span>
+      </div>
+
+      <div class="paper-item">
+        <span class="paper-num">04</span>
+        <div class="paper-body">
+          <div class="paper-title ar-only">هيمنة الدولار والنظام النقدي الدولي — سلسلة نقدية</div>
+          <div class="paper-title en-only" style="font-family:'Cormorant Garamond',serif;direction:ltr;font-size:1.1rem;">Dollar Hegemony and the International Monetary Order — A Critical Series</div>
+          <div class="paper-title-en ar-only">Dollar Hegemony and the International Monetary Order</div>
+          <div class="paper-meta">
+            <span class="tag ar-only">اقتصاد سياسي</span>
+            <span class="tag en-only" style="font-family:'Cormorant Garamond',serif;direction:ltr;">Political Economy</span>
+            <span class="tag ar-only">ثنائي اللغة</span>
+            <span class="tag en-only" style="font-family:'Cormorant Garamond',serif;direction:ltr;">Bilingual</span>
+            <span class="paper-date">يناير 2026</span>
+          </div>
+        </div>
+        <span class="paper-arrow">←</span>
+      </div>
+
+      <div class="paper-item">
+        <span class="paper-num">05</span>
+        <div class="paper-body">
+          <div class="paper-title ar-only">سوريا وسيناريوهات التسوية الأمريكية-الإيرانية</div>
+          <div class="paper-title en-only" style="font-family:'Cormorant Garamond',serif;direction:ltr;font-size:1.1rem;">Syria and US-Iran Settlement Scenarios</div>
+          <div class="paper-title-en ar-only">Syria and US-Iran Settlement Scenarios</div>
+          <div class="paper-meta">
+            <span class="tag tag-rust ar-only">راهن</span>
+            <span class="tag tag-rust en-only" style="font-family:'Cormorant Garamond',serif;direction:ltr;">Current</span>
+            <span class="tag ar-only">الشأن السوري</span>
+            <span class="paper-date">مارس 2026</span>
+          </div>
+        </div>
+        <span class="paper-arrow">←</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── BOOKS IN PROGRESS ─── -->
+<section class="section section-dark" id="books">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-number">03</span>
+      <h2 class="section-title-ar ar-only">مشاريع الكتب</h2>
+      <h2 class="section-title-ar en-only" style="font-family:'Cormorant Garamond',serif;direction:ltr;">Books in Progress</h2>
+      <span class="section-title-en">Books</span>
+    </div>
+    <div class="books-grid reveal">
+
+      <div class="book-card" style="background:rgba(255,255,255,0.04);border-color:rgba(255,255,255,0.08);border-right-color:var(--gold);">
+        <div class="book-spine"></div>
+        <div>
+          <div class="book-title" style="color:var(--parchment);" class="ar-only">الوريث الرابع</div>
+          <div class="book-title en-only" style="color:var(--parchment);font-family:'Cormorant Garamond',serif;direction:ltr;font-size:1.3rem;">The Fourth Heir</div>
+          <div class="book-title-en ar-only" style="color:var(--gold-light);">The Fourth Heir</div>
+          <div class="book-thesis ar-only" style="border-color:rgba(255,255,255,0.1);color:#8a9aaa;">
+            الكيان الخوارزمي ليس وارثاً رابعاً مستقلاً للسلطة — بل أداة لإخفاء من يمسك بزمام الهيمنة الحقيقية. نقد فلسفي-سياسي لأطروحات السيادة الرقمية.
+          </div>
+          <div class="book-thesis en-only" style="border-color:rgba(255,255,255,0.1);color:#8a9aaa;font-family:'Cormorant Garamond',serif;direction:ltr;">
+            The algorithmic entity is not an independent fourth heir to sovereignty — it is a tool for concealing who holds actual hegemony. A philosophical-political critique of digital sovereignty theses.
+          </div>
+          <div class="book-status ar-only">قيد البناء</div>
+          <div class="book-status en-only" style="font-family:'Cormorant Garamond',serif;direction:ltr;">In Progress</div>
+        </div>
+      </div>
+
+      <div class="book-card" style="background:rgba(255,255,255,0.04);border-color:rgba(255,255,255,0.08);border-right-color:var(--rust);">
+        <div class="book-spine" style="background:var(--rust);"></div>
+        <div>
+          <div class="book-title" style="color:var(--parchment);">ليس أكاديمياً</div>
+          <div class="book-title-en ar-only" style="color:var(--gold-light);">Not an Academic</div>
+          <div class="book-title en-only" style="color:var(--parchment);font-family:'Cormorant Garamond',serif;direction:ltr;font-size:1.3rem;">Not an Academic</div>
+          <div class="book-thesis ar-only" style="border-color:rgba(255,255,255,0.1);color:#8a9aaa;">
+            نقد المشروع الاستشراقي-الاستراتيجي لبرنارد لويس. تفكيك الأطروحات من الداخل باستخدام رولز وهابرماس وكانط، ثم تجاوزها بابن خلدون ومالك بن نبي.
+          </div>
+          <div class="book-thesis en-only" style="border-color:rgba(255,255,255,0.1);color:#8a9aaa;font-family:'Cormorant Garamond',serif;direction:ltr;">
+            A critique of Bernard Lewis's orientalist-strategic project. Dismantling his theses from within using Rawls, Habermas, and Kant — then surpassing them with Ibn Khaldun and Malek Bin Nabi.
+          </div>
+          <div class="book-status ar-only">فصلان مكتملان</div>
+          <div class="book-status en-only" style="font-family:'Cormorant Garamond',serif;direction:ltr;">Two Chapters Complete</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── PROJECTS ─── -->
+<section class="section section-dark" id="projects" style="padding-top:0;">
+  <div class="container">
+    <div class="section-header" style="margin-top:0;padding-top:4rem;">
+      <span class="section-number">04</span>
+      <h2 class="section-title-ar ar-only">المشاريع الجارية</h2>
+      <h2 class="section-title-ar en-only" style="font-family:'Cormorant Garamond',serif;direction:ltr;">Active Projects</h2>
+      <span class="section-title-en">Projects</span>
+    </div>
+    <div class="projects-grid reveal">
+
+      <div class="project-card">
+        <div class="project-icon">◈</div>
+        <div class="project-title ar-only">مشروع الاستقلالية المعرفية</div>
+        <div class="project-title en-only" style="font-family:'Cormorant Garamond',serif;direction:ltr;">Epistemic Independence Project</div>
+        <div class="project-title-en">Epistemic Independence</div>
+        <div class="project-desc ar-only">سلسلة أوراق بحثية في النظرية السياسية السورية. مفاهيم أصيلة تنطلق من الموروث العربي الإسلامي وتُولِّد أسئلة لا تطرحها الأدبيات القائمة.</div>
+        <div class="project-desc en-only" style="font-family:'Cormorant Garamond',serif;direction:ltr;">A series of research papers in Syrian political theory. Original concepts rooted in the Arab-Islamic intellectual tradition that generate questions the existing literature does not ask.</div>
+        <span class="project-status">نشط / Active</span>
+      </div>
+
+      <div class="project-card">
+        <div class="project-icon">⊕</div>
+        <div class="project-title ar-only">الحلقة المستدامة</div>
+        <div class="project-title en-only" style="font-family:'Cormorant Garamond',serif;direction:ltr;">The Sustainable Loop</div>
+        <div class="project-title-en">Qalamoun Agricultural Initiative</div>
+        <div class="project-desc ar-only">مشروع زراعي متكامل في جبال القلمون السورية على ارتفاع 1200-1800م. نظام حبوب-ماشية-بساتين بحلقة مستدامة (دورة زيوليت-سماد) كابتكار محوري. نموذج للتكرار عبر سوريا.</div>
+        <div class="project-desc en-only" style="font-family:'Cormorant Garamond',serif;direction:ltr;">An integrated agricultural initiative in the Qalamoun mountains of Syria at 1,200-1,800m elevation. A grain-livestock-orchard system built around a zeolite-compost sustainability loop, designed as a replicable food security model across Syria.</div>
+        <span class="project-status">تخطيط تفصيلي / Detailed Planning</span>
+      </div>
+
+      <div class="project-card">
+        <div class="project-icon">◉</div>
+        <div class="project-title ar-only">منتدى الاستقلال</div>
+        <div class="project-title en-only" style="font-family:'Cormorant Garamond',serif;direction:ltr;">Istiqlal Forum</div>
+        <div class="project-title-en">IFSS Damascus</div>
+        <div class="project-desc ar-only">منتدى الاستقلال للدراسات السياسية والاستراتيجية. منبر للتحليل الجيوسياسي الصارم المُنتَج من داخل المنظومة المرجعية العربية الإسلامية.</div>
+        <div class="project-desc en-only" style="font-family:'Cormorant Garamond',serif;direction:ltr;">The Istiqlal Forum for Political and Strategic Studies. A platform for rigorous geopolitical analysis produced from within the Arab-Islamic intellectual reference system, in collaboration with the Levant Centre for Studies and Research, London.</div>
+        <span class="project-status">نشط / Active</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── CONTACT ─── -->
+<section class="section" id="contact">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-number">05</span>
+      <h2 class="section-title-ar ar-only">تواصل</h2>
+      <h2 class="section-title-ar en-only" style="font-family:'Cormorant Garamond',serif;direction:ltr;">Contact</h2>
+      <span class="section-title-en">Contact</span>
+    </div>
+    <div class="contact-grid reveal">
+      <div>
+        <p class="contact-intro ar-only">
+          أرحّب بالمراسلات من الباحثين والمحررين وصانعي القرار والمهتمين بالشأن السوري وبمشروع الاستقلالية المعرفية. أعمل بنمط ندّية بحثية — لا مجاملات، لا تبسيط.
+        </p>
+        <p class="contact-intro en-only" style="font-family:'Cormorant Garamond',serif;direction:ltr;">
+          I welcome correspondence from researchers, editors, policymakers, and those interested in Syrian affairs and the Epistemic Independence Project. I work in a mode of intellectual peer engagement — no flattery, no simplification.
+        </p>
+        <div class="contact-links">
+          <a href="https://naifshaaban.substack.com" target="_blank" class="contact-link">
+            <div class="contact-link-icon">Sub</div>
+            <div class="contact-link-text">
+              <strong>Substack</strong>
+              <span>naifshaaban.substack.com</span>
+            </div>
+          </a>
+          <a href="https://twitter.com/sureidea" target="_blank" class="contact-link">
+            <div class="contact-link-icon">𝕏</div>
+            <div class="contact-link-text">
+              <strong>X / Twitter</strong>
+              <span>@sureidea</span>
+            </div>
+          </a>
+          <a href="https://independent.academia.edu/NaifShaaban" target="_blank" class="contact-link">
+            <div class="contact-link-icon">Ac</div>
+            <div class="contact-link-text">
+              <strong>Academia.edu</strong>
+              <span>independent.academia.edu/NaifShaaban</span>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="contact-manifesto">
+        <p class="ar-only">ما الذي يعنيه مشروع الاستقلالية المعرفية؟</p>
+        <p class="en-only" style="font-family:'Cormorant Garamond',serif;direction:ltr;font-size:1.05rem;color:var(--parchment);">What does the Epistemic Independence Project mean?</p>
+        <p class="ar-only">
+          يعني أن تبدأ التحليل من ابن خلدون لا من والتز. أن تسأل ما الذي يُتيحه المسيري لفهم هذه الظاهرة مما لا تُتيحه فوكو. أن يكون التراث العربي الإسلامي أداة تحليلية حية لا تراثاً للزينة.
+        </p>
+        <p class="en-only" style="font-family:'Cormorant Garamond',serif;direction:ltr;">
+          It means beginning analysis from Ibn Khaldun rather than Waltz. Asking what El-Messiri enables in understanding a phenomenon that Foucault does not. Treating the Arab-Islamic intellectual tradition as a living analytical tool, not decorative heritage.
+        </p>
+        <p class="ar-only">
+          ليس رفضاً للغرب — بل موقف معرفي: نحن ننتج تحليلاً من داخلنا، ونُحاور الغرب من موقع الندّ لا من موقع التابع.
+        </p>
+        <p class="en-only" style="font-family:'Cormorant Garamond',serif;direction:ltr;">
+          Not a rejection of the West — but an epistemological position: producing analysis from within our own tradition, engaging the West as peers rather than subordinates.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="footer-name ar-only">نايف شعبان — IFSS دمشق</div>
+  <div class="footer-name en-only" style="font-family:'Cormorant Garamond',serif;direction:ltr;">Nayif Sha'ban — IFSS Damascus</div>
+  <div class="footer-copy">© 2026 · naifshaaban.substack.com</div>
+</footer>
+
+<script>
+// ─── LANGUAGE TOGGLE ───
+function toggleLang() {
+  const body = document.body;
+  const btn = document.getElementById('langBtn');
+  if (body.classList.contains('en-mode')) {
+    body.classList.remove('en-mode');
+    body.setAttribute('lang', 'ar');
+    body.setAttribute('dir', 'rtl');
+    btn.textContent = 'EN';
+  } else {
+    body.classList.add('en-mode');
+    body.setAttribute('lang', 'en');
+    body.setAttribute('dir', 'ltr');
+    btn.textContent = 'عر';
+  }
+}
+
+// ─── SCROLL REVEAL ───
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('visible'), i * 80);
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+reveals.forEach(el => observer.observe(el));
+
+// ─── ACTIVE NAV ───
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('nav a');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(s => {
+    if (window.scrollY >= s.offsetTop - 100) current = s.id;
+  });
+  navLinks.forEach(a => {
+    a.style.color = a.getAttribute('href') === '#' + current ? 'var(--gold-light)' : '';
+  });
+});
+</script>
+</body>
+</html>
